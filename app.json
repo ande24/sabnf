@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Sabong",
+    "slug": "sabong-app",
+    "version": "1.0.0",
+    "newArchEnabled": true,
+    "scheme": "myapp",
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "experiments": {
+      "tsconfigPaths": true
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "This app needs Bluetooth access to connect to thermal printers for printing receipts.",
+        "NSBluetoothPeripheralUsageDescription": "This app needs Bluetooth access to connect to thermal printers for printing receipts."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.andeellenes.sabongapp",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE"
+      ]
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4cb281d6-afae-4612-bc73-47a11ecab69d"
+      }
+    }
+  }
+}
