@@ -148,14 +148,18 @@ export const FightDisplay = ({
       // Calculate ONLY MERON and WALA odds
       // DRAW odds and multiplier should be set manually from WEB admin
       
-      const meronOdds = fightData.meron_total > 0 ? (1 + (1 - adminConfig.commission_pct)) : 0;
-      const walaOdds = fightData.wala_total > 0 ? (1 + (1 - adminConfig.commission_pct)) : 0;
+      const mwPool = fightData.meron_total + fightData.wala_total;  // Meron + Wala pool before commission
+      const mwCommission = mwPool * adminConfig.commission_pct;  // Commission from MW pool
+      const netPool = mwPool - mwCommission;   // Adjusted MW pool for odds calculation
+
+      // side odds = adjusted pool / side total
+      const meronOdds = (fightData.meron_total > 0 && fightData.wala_total > 0) ? (netPool / fightData.meron_total) : 0;
+      const walaOdds = (fightData.meron_total > 0 && fightData.wala_total > 0) ? (netPool / fightData.wala_total) : 0;
       
+      // Draw commission taken separately 
+      const drawCommission = (fightData.draw_total || 0) * adminConfig.commission_pct;  
       // Calculate total commission collected
-      const meronCommission = fightData.meron_total * adminConfig.commission_pct;
-      const walaCommission = fightData.wala_total * adminConfig.commission_pct;
-      const drawCommission = (fightData.draw_total || 0) * adminConfig.commission_pct;
-      const totalCommission = meronCommission + walaCommission + drawCommission;
+      const totalCommission = mwCommission + drawCommission;
 
       // ONLY update MERON and WALA odds, NOT draw_odds or draw_multiplier
       updateFightData([
