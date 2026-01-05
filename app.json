@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Sabong",
-    "slug": "sabong-app",
+    "slug": "sabong",
     "version": "1.0.0",
     "newArchEnabled": true,
     "scheme": "myapp",
@@ -52,10 +52,7 @@
       ]
     },
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "4cb281d6-afae-4612-bc73-47a11ecab69d"
-      }
+      "router": {}
     }
   }
 }
